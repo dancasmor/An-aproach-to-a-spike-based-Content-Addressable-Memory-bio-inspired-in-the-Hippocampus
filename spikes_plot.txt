@@ -1,0 +1,271 @@
+1)
+    plt.figure(figsize=(26, 29))
+    #plt.figure(figsize=(26, 31))
+
+    # Add point for each neuron of each population that fire, take y labels and x labels
+    populationsXValues = []
+    populationsYValues = []
+    globalIndex = 0
+    listYticks = []
+    listXticks = []
+    for indexPop, populationSpikes in enumerate(spikes):
+        xvalues = []
+        yvalues = []
+        # Assign y value (population index) and y label
+        for indexNeuron, spikesSingleNeuron in enumerate(populationSpikes):
+            listYticks.append(popNames[indexPop] + str(indexNeuron))
+            xvalues = xvalues + spikesSingleNeuron
+            yvalues = yvalues + [indexNeuron + globalIndex for i in spikesSingleNeuron]
+        globalIndex = globalIndex + len(populationSpikes)
+        # Add to the populations values list
+        populationsXValues.append(xvalues)
+        populationsYValues.append(yvalues)
+        # Add xvalues to labels
+        listXticks = list(set(listXticks + xvalues))
+    maxXvalue = max(listXticks)
+    minXvalue = min(listXticks)
+
+    # Lines for each points
+    for indexPop in range(len(spikes)):
+        plt.vlines(populationsXValues[indexPop], ymin=-1, ymax=populationsYValues[indexPop], color=colors[indexPop],
+                   alpha=0.1)
+        plt.hlines(populationsYValues[indexPop], xmin=-1, xmax=populationsXValues[indexPop], color=colors[indexPop],
+                   alpha=0.1)
+
+    # Add spikes to scatterplot
+    for indexPop in range(len(spikes)):
+        plt.plot(populationsXValues[indexPop], populationsYValues[indexPop], pointTypes[indexPop],
+                 color=colors[indexPop], label=labels[indexPop], markersize=15)
+
+    # Metadata
+    plt.xlabel("Simulation time (ms)", fontsize=30, weight='bold')
+    plt.ylabel("Neuron spikes", fontsize=30, weight='bold')
+    #plt.title(title, fontsize=20)
+    plt.ylim([-1, globalIndex])
+    plt.xlim(-1 + minXvalue, maxXvalue + 1)
+    plt.yticks(range(len(listYticks)), listYticks, fontsize=25, weight='bold')
+    #plt.legend(fontsize=20)
+
+
+    # Divide xticks list in pair or odd position
+    listXticks.sort()
+    listXticksOdd = [int(tick) for index, tick in enumerate(listXticks) if not (index % 2 == 0)]
+    listXticksPair = [int(tick) for index, tick in enumerate(listXticks) if index % 2 == 0]
+    # Write them with alternate distance
+    ax = plt.gca()
+    ax.set_xticklabels(listXticksOdd, minor=True)
+    ax.set_xticks(listXticksOdd, minor=True)
+    ax.set_xticklabels(listXticksPair, minor=False)
+    ax.set_xticks(listXticksPair, minor=False)
+    ax.tick_params(axis='x', which='minor', pad=35)
+    ax.tick_params(axis='x', which='both', labelsize=25, rotation=90)
+
+    plt.legend(fontsize=25, bbox_to_anchor=(1.0, 0.95), loc='upper left')
+    plt.tight_layout()
+
+    # Save and/or plot
+    if write:
+        # Check if folder exist, if not, create it
+        create_folder_if_not_exist(outFilePath)
+        plt.savefig(outFilePath + baseFilename + ".png")
+    if plot:
+        plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2)
+    plt.figure(figsize=(26, 29))
+    #plt.figure(figsize=(26, 31))
+
+    # Add point for each neuron of each population that fire, take y labels and x labels
+    populationsXValues = []
+    populationsYValues = []
+    globalIndex = 0
+    listYticks = []
+    listXticks = []
+    for indexPop, populationSpikes in enumerate(spikes):
+        xvalues = []
+        yvalues = []
+        # Assign y value (population index) and y label
+        for indexNeuron, spikesSingleNeuron in enumerate(populationSpikes):
+            listYticks.append(popNames[indexPop] + str(indexNeuron))
+            xvalues = xvalues + spikesSingleNeuron
+            yvalues = yvalues + [indexNeuron + globalIndex for i in spikesSingleNeuron]
+        globalIndex = globalIndex + len(populationSpikes)
+        # Add to the populations values list
+        populationsXValues.append(xvalues)
+        populationsYValues.append(yvalues)
+        # Add xvalues to labels
+        listXticks = list(set(listXticks + xvalues))
+    maxXvalue = max(listXticks)
+    minXvalue = min(listXticks)
+
+    # Lines for each points
+    for indexPop in range(len(spikes)):
+        plt.vlines(populationsXValues[indexPop], ymin=-1, ymax=populationsYValues[indexPop], color=colors[indexPop],
+                   alpha=0.1)
+        plt.hlines(populationsYValues[indexPop], xmin=-1, xmax=populationsXValues[indexPop], color=colors[indexPop],
+                   alpha=0.1)
+
+    # Add spikes to scatterplot
+    for indexPop in range(len(spikes)):
+        plt.plot(populationsXValues[indexPop], populationsYValues[indexPop], pointTypes[indexPop],
+                 color=colors[indexPop], label=labels[indexPop], markersize=15)
+
+    # Metadata
+    plt.xlabel("Simulation time (ms)", fontsize=30, weight='bold')
+    plt.ylabel("Neuron spikes", fontsize=30, weight='bold')
+    #plt.title(title, fontsize=20)
+    plt.ylim([-1, globalIndex])
+    plt.xlim(-1 + minXvalue, maxXvalue + 1)
+    plt.yticks(range(len(listYticks)), listYticks, fontsize=25, weight='bold')
+    #plt.legend(fontsize=20)
+
+
+    # Divide xticks list in pair or odd position
+    #listXticks.sort()
+    #listXticksOdd = [int(tick) for index, tick in enumerate(listXticks) if not (index % 2 == 0)]
+    #listXticksPair = [int(tick) for index, tick in enumerate(listXticks) if index % 2 == 0]
+    listX = [x for x in range(0, int(maxXvalue), 50)]
+    # Write them with alternate distance
+    ax = plt.gca()
+    #ax.set_xticklabels(listXticksOdd, minor=True)
+    #ax.set_xticks(listXticksOdd, minor=True)
+    #ax.set_xticklabels(listXticksPair, minor=False)
+    #ax.set_xticks(listXticksPair, minor=False)
+    #ax.tick_params(axis='x', which='minor', pad=35)
+    ax.set_xticklabels(listX, minor=True)
+    ax.tick_params(axis='x', which='both', labelsize=25, rotation=90)
+
+    plt.legend(fontsize=25, bbox_to_anchor=(1.0, 0.95), loc='upper left')
+    plt.tight_layout()
+
+    # Save and/or plot
+    if write:
+        # Check if folder exist, if not, create it
+        create_folder_if_not_exist(outFilePath)
+        plt.savefig(outFilePath + baseFilename + ".png")
+    if plot:
+        plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3)
+    #plt.figure(figsize=(26, 29))
+    plt.figure(figsize=(39, 31))
+
+    # Add point for each neuron of each population that fire, take y labels and x labels
+    populationsXValues = []
+    populationsYValues = []
+    globalIndex = 0
+    listYticks = []
+    listXticks = []
+    for indexPop, populationSpikes in enumerate(spikes):
+        xvalues = []
+        yvalues = []
+        # Assign y value (population index) and y label
+        for indexNeuron, spikesSingleNeuron in enumerate(populationSpikes):
+            listYticks.append(popNames[indexPop] + str(indexNeuron))
+            xvalues = xvalues + spikesSingleNeuron
+            yvalues = yvalues + [indexNeuron + globalIndex for i in spikesSingleNeuron]
+        globalIndex = globalIndex + len(populationSpikes)
+        # Add to the populations values list
+        populationsXValues.append(xvalues)
+        populationsYValues.append(yvalues)
+        # Add xvalues to labels
+        listXticks = list(set(listXticks + xvalues))
+    maxXvalue = max(listXticks)
+    minXvalue = min(listXticks)
+
+    # Lines for each points
+    for indexPop in range(len(spikes)):
+        plt.vlines(populationsXValues[indexPop], ymin=-1, ymax=populationsYValues[indexPop], color=colors[indexPop],
+                   alpha=0.1)
+        plt.hlines(populationsYValues[indexPop], xmin=-1, xmax=populationsXValues[indexPop], color=colors[indexPop],
+                   alpha=0.1)
+
+    # Add spikes to scatterplot
+    for indexPop in range(len(spikes)):
+        plt.plot(populationsXValues[indexPop], populationsYValues[indexPop], pointTypes[indexPop],
+                 color=colors[indexPop], label=labels[indexPop], markersize=15)
+
+    # Metadata
+    plt.xlabel("Simulation time (ms)", fontsize=30, weight='bold')
+    plt.ylabel("Neuron spikes", fontsize=30, weight='bold')
+    #plt.title(title, fontsize=20)
+    plt.ylim([-1, globalIndex])
+    plt.xlim(-1 + minXvalue, maxXvalue + 1)
+    plt.yticks(range(len(listYticks)), listYticks, fontsize=22, weight='bold')
+    #plt.legend(fontsize=20)
+
+
+    # Divide xticks list in pair or odd position
+    listXticks.sort()
+    listXticksOdd = [int(tick) for index, tick in enumerate(listXticks) if not (index % 2 == 0)]
+    listXticksPair = [int(tick) for index, tick in enumerate(listXticks) if index % 2 == 0]
+    # Write them with alternate distance
+    ax = plt.gca()
+    ax.set_xticklabels(listXticksOdd, minor=True)
+    ax.set_xticks(listXticksOdd, minor=True)
+    ax.set_xticklabels(listXticksPair, minor=False)
+    ax.set_xticks(listXticksPair, minor=False)
+    ax.tick_params(axis='x', which='minor', pad=35)
+    ax.tick_params(axis='x', which='both', labelsize=20, rotation=90)
+
+    plt.legend(fontsize=25, bbox_to_anchor=(1.0, 0.95), loc='upper left')
+    plt.tight_layout()
+
+    # Save and/or plot
+    if write:
+        # Check if folder exist, if not, create it
+        create_folder_if_not_exist(outFilePath)
+        plt.savefig(outFilePath + baseFilename + ".png")
+    if plot:
+        plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
