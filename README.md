@@ -1,8 +1,8 @@
-# Bio-inspired computational memory model of the Hippocampus: an aproach to a spike-based Content-Addressable Memory
+# Bio-inspired computational memory model of the Hippocampus: an approach to a spike-based Content-Addressable Memory
 
 <h2 name="Description">Description</h2>
 <p align="justify">
-Code on which the paper entitled "Bio-inspired computational memory model of the Hippocampus: an aproach to a spike-based Content-Addressable Memory" is based, sent to a journal and awaiting review.
+Code on which the paper entitled "Bio-inspired computational memory model of the Hippocampus: an approach to a spike-based Content-Addressable Memory" is based, sent to a journal and awaiting review.
 </p>
 <p align="justify">
 A fully functional spike-based Content-Addressable Memory model bio-inspired in the CA3 region of the hippocampus implemented on the <a href="https://apt.cs.manchester.ac.uk/projects/SpiNNaker/">SpiNNaker</a> hardware platform using the technology of the Spiking Neuronal Network (SNN) is presented. The code is written in Python and makes use of the PyNN library and their adaptation for SpiNNaker called <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjaxOCWhrn3AhVL1BoKHVtQDvsQFnoECAkQAQ&url=https%3A%2F%2Fgithub.com%2FSpiNNakerManchester%2FsPyNNaker&usg=AOvVaw3e3TBMJ-08yBqtsKza_RiE">sPyNNaker</a>. In addition, the necessary scripts to replicate the tests and plots carried out in the paper are included, together with data and plots of the tests.
@@ -29,7 +29,7 @@ Please go to section <a href="#CiteThisWork">cite this work</a> to learn how to 
 
 <h2 name="Article">Article</h2>
 <p align="justify">
-<strong>Title</strong>: Bio-inspired computational memory model of the Hippocampus: an aproach to a spike-based Content-Addressable Memory
+<strong>Title</strong>: Bio-inspired computational memory model of the Hippocampus: an approach to a spike-based Content-Addressable Memory
 
 <strong>Abstract</strong>: The brain has computational capabilities that surpass those of modern systems, being able to solve complex problems efficiently in a simple way. Neuromorphic engineering tries to mimic biology in order to develop new systems capable of incorporating such capabilities. Bio-inspired learning systems still remain as a challenge to be solved and with much work yet to be done. Among all brain regions, the hippocampus stands out as an autoassociative short-term memory with the capacity to learn and recall memories from any fragment of them. These characteristics make the hippocampus an ideal candidate as a material for developing bio-inspired learning systems that, in addition, resemble content-addressable memories. Therefore, in this work we propose a bio-inspired spiking content-addressable memory model based in the CA3 region of the hippocampus with the ability to learn, forget and recall memories, both orthogonal and non-orthogonal, from any fragment of them. The model was implemented on the SpiNNaker hardware platform using Spiking Neural Networks. A set of experiments based on functional, stress and applicability tests were performed to demonstrate its correct functioning. This work presents the first hardware implementation of a fully-functional bio-inspired spiking hippocampal content-addressable memory model, paving the way for the development of future more complex neuromorphic systems.
 
@@ -48,7 +48,7 @@ Please go to section <a href="#CiteThisWork">cite this work</a> to learn how to 
 	<li>Python version 3.8.10</li>
 	<li>Python libraries:</li>
 	<ul>
-		<li><strong>sPyNNaker</strong></li>
+		<li><p align="justify"><strong>sPyNNaker8</strong> or sPyNNaker (changing "import spynnaker8 as sim" to import "pyNN.spiNNaker as sim")</p></li>
 		<li><strong>numpy</strong> 1.21.4</li>
 		<li><strong>matplotlib</strong> 3.5.0</li>
 		<li><strong>xlsxWriter</strong> 3.0.2</li>
@@ -86,7 +86,16 @@ Finally, in order to be able to use the memory model as a module within a larger
 
 <h2 name="CiteThisWork">Cite this work</h2>
 <p align="justify">
-Work in progress...
+<strong>APA</strong>: Casanueva-Morato, D., Ayuso-Martinez, A., Dominguez-Morales, J. P., Jimenez-Fernandez, A., & Jimenez-Moreno, G. (2024). Bio-inspired computational memory model of the Hippocampus: an approach to a neuromorphic spike-based Content-Addressable Memory. Neural Networks, 106474.
+</p>
+<p align="justify">
+<strong>ISO 690</strong>: CASANUEVA-MORATO, Daniel, et al. Bio-inspired computational memory model of the Hippocampus: an approach to a neuromorphic spike-based Content-Addressable Memory. Neural Networks, 2024, p. 106474.
+</p>
+<p align="justify">
+<strong>MLA</strong>: Casanueva-Morato, Daniel, et al. "Bio-inspired computational memory model of the Hippocampus: an approach to a neuromorphic spike-based Content-Addressable Memory." Neural Networks (2024): 106474.
+</p>
+<p align="justify">
+<strong>BIBTEX</strong>: @article{casanueva2024bio, title={Bio-inspired computational memory model of the Hippocampus: an approach to a neuromorphic spike-based Content-Addressable Memory}, author={Casanueva-Morato, Daniel and Ayuso-Martinez, Alvaro and Dominguez-Morales, Juan P and Jimenez-Fernandez, Angel and Jimenez-Moreno, Gabriel}, journal={Neural Networks}, pages={106474}, year={2024}, publisher={Elsevier}}
 </p>
 
 
@@ -94,9 +103,9 @@ Work in progress...
 <p align="justify">
 The author of the original idea is Daniel Casanueva-Morato while working on a research project of the <a href="http://www.rtc.us.es/">RTC Group</a>.
 
-This research was partially supported by the Spanish grant MINDROB (PID2019-105556GB-C33/AEI/10.13039/501100011033). 
+This work is supported by grant MINDROB (PID2019-105556GB-C33), NASSAI (PDC2023-145841-C33) and SANEVEC (TED2021-130825B-I00) funded by MICIU/AEI /10.13039/501100011033, by “ERDF A way of making Europe” and by the European Union NextGenerationEU/PRTR.
 
-D. C.-M. was supported by a "Formación de Profesor Universitario" Scholarship from the Spanish Ministry of Education, Culture and Sport.
+D. C.-M. was supported by a “Formación de Profesorado Universitario” Scholarship from the Spanish Ministry of Science, Innovation and Universities.
 </p>
 
 
