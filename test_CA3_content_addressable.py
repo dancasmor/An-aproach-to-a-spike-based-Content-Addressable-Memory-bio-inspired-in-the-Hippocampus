@@ -36,7 +36,7 @@ experiment = 1
 #           + The set of cells with obstacles to know the topology of the environment.
 #           + the set of cells of unknown status to be explored in future incursions.
 
-elif experiment == 1:
+if experiment == 1:
     # op -> t=0[0]=[0,1,8,9], t=10[4]=[1,5,6], t=20[3]=[4,5,6,8], t=30[0], t=40[]=[6], t=50[]=[0,4],
     #       t=60[3]=[1,3,4,8], t=70[3], t=80[]=[6]
     # + Spikes of the input layer
